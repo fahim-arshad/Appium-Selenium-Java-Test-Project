@@ -1,0 +1,45 @@
+package tests;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+
+import io.appium.java_client.remote.MobileCapabilityType;
+
+public class baseClass {
+
+	@BeforeTest
+	public void setup() {
+		
+		try {
+			
+			DesiredCapabilities caps = new DesiredCapabilities();
+			
+			caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "ANDRIOD");
+			caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "12 SKQ1.210908.001");
+			caps.setCapability(MobileCapabilityType.DEVICE_NAME, "Mi 11");
+			caps.setCapability(MobileCapabilityType.UDID, "e1fc1895");
+			caps.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 60);
+			caps.setCapability(MobileCapabilityType.APP, "");
+			caps.setCapability(MobileCapabilityType.BROWSER_NAME, "Chrome");
+			
+		
+			URL url = new URL("http://127.0.0.1:4723/wd/hub");
+		} catch (MalformedURLException e) {
+
+			System.out.println("Cause is: " + e.getCause());
+			System.out.println("Message is: " + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	
+	@AfterTest
+	public void tearDown() {
+		
+	}
+}
